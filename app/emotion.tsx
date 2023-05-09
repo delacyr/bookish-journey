@@ -1,10 +1,14 @@
 'use client';
 
 import { CacheProvider } from '@emotion/react';
-import { useEmotionCache, MantineProvider } from '@mantine/core';
+import { useEmotionCache, MantineProvider, ColorSchemeProvider, ColorScheme } from '@mantine/core';
 import { useServerInsertedHTML } from 'next/navigation';
+import { useState } from 'react';
 
 export default function RootStyleRegistry({ children }: { children: React.ReactNode }) {
+    const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+    const toggleColorScheme = (value?: ColorScheme) =>
+        setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   const cache = useEmotionCache();
   cache.compat = true;
 
@@ -19,9 +23,11 @@ export default function RootStyleRegistry({ children }: { children: React.ReactN
 
   return (
     <CacheProvider value={cache}>
-      <MantineProvider withGlobalStyles withNormalizeCSS>
-        {children}
-      </MantineProvider>
+        <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+            <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
+                {children}
+            </MantineProvider>
+        </ColorSchemeProvider>
     </CacheProvider>
   );
 }
