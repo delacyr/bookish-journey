@@ -1,6 +1,8 @@
 'use client';
 
 import { createStyles, Select, TextInput } from '@mantine/core';
+import { Welcome } from '@components/Welcome/Welcome';
+import { ColorSchemeToggle } from '@components/ColorSchemeToggle/ColorSchemeToggle';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -17,7 +19,7 @@ const useStyles = createStyles((theme) => ({
     pointerEvents: 'none',
     fontSize: theme.fontSizes.xs,
     paddingLeft: theme.spacing.sm,
-    paddingTop: theme.spacing.sm / 2,
+    paddingTop: theme.spacing.sm,
     zIndex: 1,
   },
 }));
@@ -28,6 +30,8 @@ export function Test() {
 
   return (
     <div>
+      <Welcome />
+      <ColorSchemeToggle />
       <TextInput label="Shipping address" placeholder="15329 Huston 21st" classNames={classes} />
 
       <Select
