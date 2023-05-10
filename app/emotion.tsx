@@ -6,9 +6,14 @@ import { useServerInsertedHTML } from 'next/navigation';
 import { useState } from 'react';
 
 export default function RootStyleRegistry({ children }: { children: React.ReactNode }) {
-    const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
-    const toggleColorScheme = (value?: ColorScheme) =>
-        setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+  const toggleColorScheme = () => {
+    setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
+    document.body.style.background =
+      colorScheme === 'dark' ? 'var(--mantine-color-white)' : 'var(--mantine-color-dark-7)';
+    document.body.style.color =
+      colorScheme === 'dark' ? 'var(--mantine-color-black)' : 'var(--mantine-color-dark-0)';
+  };
   const cache = useEmotionCache();
   cache.compat = true;
 
@@ -23,11 +28,18 @@ export default function RootStyleRegistry({ children }: { children: React.ReactN
 
   return (
     <CacheProvider value={cache}>
-        <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-            <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-                {children}
-            </MantineProvider>
-        </ColorSchemeProvider>
+      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          withCSSVariables
+          theme={{
+            colorScheme,
+          }}
+        >
+          {children}
+        </MantineProvider>
+      </ColorSchemeProvider>
     </CacheProvider>
   );
 }
