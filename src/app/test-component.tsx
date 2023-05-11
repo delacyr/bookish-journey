@@ -10,6 +10,13 @@ const useStyles = createStyles((theme) => ({
     position: 'relative',
   },
 
+  box: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   input: {
     height: 'auto',
     paddingTop: 18,
@@ -31,9 +38,10 @@ export function Test() {
   const router = useRouter();
 
   return (
-    <div>
+    <>
       <Welcome />
       <ColorSchemeToggle />
+      <div className={classes.box}>
       <TextInput label="Shipping address" placeholder="15329 Huston 21st" classNames={classes} />
 
       <Select
@@ -42,8 +50,10 @@ export function Test() {
         placeholder="Pick one"
         label="Your favorite library/framework"
         classNames={classes}
+
       />
-        <Button variant="gradient" onClick={() => router.push('/perfil')}>Perfil</Button>
-    </div>
+        <Button variant="gradient" onClick={() => router.push('/perfil')} mt={20}>Perfil</Button>
+      </div>
+    </>
   );
 }
