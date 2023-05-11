@@ -1,7 +1,5 @@
-import { HeaderMegaMenu } from '@components/Layout/Header';
+import { HeaderMegaMenu } from '@components/Header/Header';
 import RootStyleRegistry from './emotion';
-// These styles apply to every route in the application
-import './global.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

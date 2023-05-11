@@ -31,6 +31,7 @@ import {
   IconChevronDown,
   IconAbacus,
 } from '@tabler/icons-react';
+import { signIn } from 'next-auth/react';
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -164,7 +165,7 @@ export function HeaderMegaMenu() {
                 <a href="#" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Features
+                      Funcionalidades
                     </Box>
                     {/* eslint-disable-next-line max-len */}
                     <IconChevronDown size={16} color={theme.fn.primaryColor()} />
@@ -214,7 +215,7 @@ export function HeaderMegaMenu() {
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">Log in</Button>
+            <Button variant="default" onClick={() => signIn()}>Log in</Button>
             <Button>Sign up</Button>
           </Group>
 
@@ -257,7 +258,7 @@ export function HeaderMegaMenu() {
           <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
 
           <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
+            <Button variant="default" onClick={() => signIn()}>Log in</Button>
             <Button>Sign up</Button>
           </Group>
         </ScrollArea>

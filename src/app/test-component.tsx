@@ -1,8 +1,9 @@
 'use client';
 
-import { createStyles, Select, TextInput } from '@mantine/core';
-import { Welcome } from '@components/Welcome/Welcome';
+import { Button, createStyles, Select, TextInput } from '@mantine/core';
+import { useRouter } from 'next/navigation';
 import { ColorSchemeToggle } from '@components/ColorSchemeToggle/ColorSchemeToggle';
+import { Welcome } from '@components/Welcome/Welcome';
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -27,6 +28,7 @@ const useStyles = createStyles((theme) => ({
 export function Test() {
   // You can add these classes as classNames to any Mantine input, it will work the same
   const { classes } = useStyles();
+  const router = useRouter();
 
   return (
     <div>
@@ -41,6 +43,7 @@ export function Test() {
         label="Your favorite library/framework"
         classNames={classes}
       />
+        <Button variant="gradient" onClick={() => router.push('/perfil')}>Perfil</Button>
     </div>
   );
 }
