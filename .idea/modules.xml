@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bookish-journey.iml" filepath="$PROJECT_DIR$/.idea/bookish-journey.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tars.iml" filepath="$PROJECT_DIR$/.idea/tars.iml" />
     </modules>
   </component>
 </project>
