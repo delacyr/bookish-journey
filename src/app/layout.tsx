@@ -38,9 +38,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             navbarOffsetBreakpoint="sm"
             asideOffsetBreakpoint="sm"
             navbar={
-              <Navbar p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-                <DoubleNavbar />
-              </Navbar>
+              <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+                <Navbar p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+                  <DoubleNavbar />
+                </Navbar>
+              </MediaQuery>
             }
             aside={
               <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
